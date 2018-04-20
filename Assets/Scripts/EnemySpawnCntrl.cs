@@ -11,14 +11,17 @@ public class EnemySpawnCntrl : MonoBehaviour {
     public Transform spawnPoint2;
     public Transform spawnPoint3;
     public Transform spawnPoint4;
-
-
+    public Transform[] spawnPointList;
+    
 
     private int EnemiesCounter;
     private float timerMax = 1f;
     private float timerMin = 0f;
-    private Transform[] spawnPointList; 
-
+    private float timerResetHolder = 1f; 
+   
+    private int lvlOfDifficulty;
+    private bool difficultySetup = false; 
+      
    
     
 
@@ -26,55 +29,142 @@ public class EnemySpawnCntrl : MonoBehaviour {
 	void Start () {
         spawnEnemies = true;
         EnemiesCounter = 0; 
-        maxNumOfEnemies = 30; 
-	}
+        maxNumOfEnemies = 0;
+        lvlOfDifficulty = 2;
+    }
 	
 	// Update is called once per frame
-	void Update () {
-
-        if(spawnEnemies && EnemiesCounter < maxNumOfEnemies)
+	void Update ()
+    {        
+        if (spawnEnemies)
         {
-            timerMax -= Time.deltaTime;
-            if (timerMax < timerMin)
-            {             
-                EnemiesCounter++; 
-                Instantiate(EnemyType1, spawnPoint1); 
-                timerMax = 2f; // reset timer
-            }
+            doEnemyWaves();
         }
-        if (spawnEnemies && EnemiesCounter < maxNumOfEnemies)
-        {
-            timerMax -= Time.deltaTime;
-            if (timerMax < timerMin)
-            {
-                EnemiesCounter++;
-                Instantiate(EnemyType1, spawnPoint2);
-                timerMax = 2f; // reset timer
-            }
-        }
-        if (spawnEnemies && EnemiesCounter < maxNumOfEnemies)
-        {
-            timerMax -= Time.deltaTime;
-            if (timerMax < timerMin)
-            {
-                EnemiesCounter++;
-                Instantiate(EnemyType1, spawnPoint3);
-                timerMax = 4f; // reset timer
-            }
-        }
-        if (spawnEnemies && EnemiesCounter < maxNumOfEnemies)
-        {
-            timerMax -= Time.deltaTime;
-            if (timerMax < timerMin)
-            {
-                EnemiesCounter++;
-                Instantiate(EnemyType1, spawnPoint4);
-                timerMax = 3f; // reset timer
-            }
-        }
-
     }
 
   
+    void doEnemyWaves()
+    {       
+            switch (lvlOfDifficulty)
+            {
+                case 0:
+                {
+                    if (difficultySetup == false)
+                    {
+                        timerResetHolder = 3f;
+                        maxNumOfEnemies = 30;
+                        difficultySetup = true;
+                    }
+
+                    if (maxNumOfEnemies > 0)
+                    {
+                        timerMax -= Time.deltaTime;
+                        if (timerMax < timerMin)
+                        {
+                            EnemiesCounter++;
+                            Instantiate(EnemyType1, spawnPointList[Random.Range(0, spawnPointList.Length)]);
+                            maxNumOfEnemies--;
+                            timerMax = timerResetHolder; // reset timer                          
+                        }
+                    }
+                    else
+                    {
+                        spawnEnemies = false;
+                    }
+                    break;
+                }
+               
+
+                case 1:
+                {
+                    if (difficultySetup == false)
+                    {
+                        timerResetHolder = 2f;
+                        maxNumOfEnemies = 60;
+                        difficultySetup = true;
+                    }
+
+                    if (maxNumOfEnemies > 0)
+                    {
+                        timerMax -= Time.deltaTime;
+                        if (timerMax < timerMin)
+                        {
+                            EnemiesCounter++;
+                            Instantiate(EnemyType1, spawnPointList[Random.Range(0, spawnPointList.Length)]);
+                            maxNumOfEnemies--;
+                            timerMax = timerResetHolder; // reset timer                           
+                        }
+                    }
+                    else
+                    {
+                        spawnEnemies = false;
+                    }
+                    break;
+
+                }
+
+            case 2:
+                {
+                    if (difficultySetup == false)
+                    {
+                        timerResetHolder = 0.5f;
+                        maxNumOfEnemies = 90;
+                        difficultySetup = true;
+                    }
+                    if (maxNumOfEnemies > 0)
+                    {
+                        timerMax -= Time.deltaTime;
+                        if (timerMax < timerMin)
+                        {
+                            EnemiesCounter++;
+                            Instantiate(EnemyType1, spawnPointList[Random.Range(0, spawnPointList.Length)]);
+                            maxNumOfEnemies--;
+                            timerMax = timerResetHolder; // reset timer                          
+                        }
+                    }
+                    else
+                    {
+                        spawnEnemies = false;
+                    }
+                    break;
+
+                }
+
+            case 3:
+                {
+                    if (difficultySetup == false)
+                    {
+                        timerResetHolder = 0.2f;
+                        maxNumOfEnemies = 300;
+                        difficultySetup = true;
+                    }
+
+                    if (maxNumOfEnemies > 0)
+                    {
+                        timerMax -= Time.deltaTime;
+                        if (timerMax < timerMin)
+                        {
+                            EnemiesCounter++;
+                            Instantiate(EnemyType1, spawnPointList[Random.Range(0, spawnPointList.Length)]);
+                            maxNumOfEnemies--;
+                            timerMax = timerResetHolder; // reset timer                          
+                        }
+                    }
+                    else
+                    {
+                        spawnEnemies = false;
+                    }
+                    break;
+                }
+               
+
+            default:
+                break;                
+            }
+
+        //Debug.Log("Number of Enemies: " + maxNumOfEnemies);
+
+
+    }
 
 }
