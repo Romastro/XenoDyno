@@ -121,5 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6718a7c9ad1f46340b25e82fde3435bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cargo: {fileID: 0}
+  cargo: {fileID: 1641844983554662, guid: 912da2d6d88c4ab43a5e2e8a8f8a24ef, type: 2}
+  player1: {fileID: 1452056740771270, guid: ddb46b51f747c704e9196062189e3ca4, type: 2}
+  player2: {fileID: 1719994372034478, guid: 3eab71bd943e06041b4cab431168e441, type: 2}
   speed: 2

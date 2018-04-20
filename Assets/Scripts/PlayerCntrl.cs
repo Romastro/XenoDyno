@@ -129,23 +129,26 @@ public class PlayerCntrl : MonoBehaviour {
 
     void OnTriggerEnter (Collider other)
     {
-        if(other.gameObject.tag == "Enemy" && GetComponent<PlayerCntrl>().Slash.GetComponent<SphereCollider>().enabled == true)
-        {
-            Debug.Log("Enemy Hit!"); 
-            Destroy(other.gameObject); 
-        }
+        /*
+    if(other.gameObject.tag == "Enemy" && GetComponent<PlayerCntrl>().Slash.GetComponent<SphereCollider>().enabled == true)
+    {
+        Debug.Log("Enemy Hit!"); 
+        Destroy(other.gameObject); 
+    }
 
-        if (other.gameObject.tag == "Enemy" && GetComponent<PlayerCntrl>().Ability1.GetComponent<BoxCollider>().enabled == true)
-        {
-            Debug.Log("Enemy Hit!");
-            Destroy(other.gameObject);
-        }
 
-        if (other.gameObject.tag == "Enemy" && GetComponent<PlayerCntrl>().Ability2.GetComponent<BoxCollider>().enabled == true)
-        {
-            Debug.Log("Enemy Hit!");
-            Destroy(other.gameObject);
-        }
+    if (other.gameObject.tag == "Enemy" && GetComponent<PlayerCntrl>().Ability1.GetComponent<BoxCollider>().enabled == true)
+    {
+        Debug.Log("Enemy Hit!");
+        Destroy(other.gameObject);
+    }
+
+    if (other.gameObject.tag == "Enemy" && GetComponent<PlayerCntrl>().Ability2.GetComponent<BoxCollider>().enabled == true)
+    {
+        Debug.Log("Enemy Hit!");
+        Destroy(other.gameObject);
+    }
+    */
 
     }
 }

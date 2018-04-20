@@ -21,8 +21,7 @@ public class EnemySpawnCntrl : MonoBehaviour {
    
     private int lvlOfDifficulty;
     private bool difficultySetup = false; 
-      
-   
+         
     
 
 	// Use this for initialization
