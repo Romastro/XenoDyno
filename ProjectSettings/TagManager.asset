@@ -9,6 +9,7 @@ TagManager:
   - Cargo
   - Enemy
   - bullet
+  - Ground
   layers:
   - Default
   - TransparentFX
